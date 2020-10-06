@@ -10,4 +10,6 @@ Data analysis for the paper TEAM COLLABORATION PLATFORM SUPPORTING PROJECT-BASED
 ## Datasets
 
 - Students' commits on GitHub (json)
-- Students' messages on Mattermost, message contents excluded (json)
+- Students' messages on Mattermost, message contents excluded (json)'
+
+To do: data dictionary
