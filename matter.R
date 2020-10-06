@@ -2,7 +2,7 @@
 # Mattermost data
 # Essi Viippola, 12.7.2020
 
-# Set working directory
+# Settings
 
 Sys.setlocale("LC_ALL","English")
 
