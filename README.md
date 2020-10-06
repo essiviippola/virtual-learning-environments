@@ -6,3 +6,8 @@ Data analysis for the second paper: TEAM COLLABORATION PLATFORM SUPPORTING PROJE
 
 - How much and when are students commiting on GitHub?
 - How much and when are students messaging on Mattermost?
+
+## Datasets
+
+- Students' commits on GitHub (json)
+- Students' messages on Mattermost, message contents excluded (json)
