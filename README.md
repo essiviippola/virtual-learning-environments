@@ -1,6 +1,6 @@
 # Virtual Learning Environments
 
-Data analysis for the second paper: TEAM COLLABORATION PLATFORM SUPPORTING PROJECT-BASED LEARNING 
+Data analysis for the paper TEAM COLLABORATION PLATFORM SUPPORTING PROJECT-BASED LEARNING
 
 ## Research questions
 
