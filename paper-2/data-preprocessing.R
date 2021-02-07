@@ -10,7 +10,7 @@ library("tidyverse")
 
 # Read data
 
-dat = read.csv("data/webpropol-2020.csv", header = T, sep = ";", encoding = "UTF-8", stringsAsFactors = F) %>% as_tibble()
+dat = read.csv("../data/webpropol-2020.csv", header = T, sep = ";", encoding = "UTF-8", stringsAsFactors = F) %>% as_tibble()
 
 # Reformat names
 
