@@ -1,0 +1,41 @@
+---
+title: "Webpropol answers 2020"
+author: "Essi Viippola"
+date: "7.2.2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE}
+library("tidyverse")
+library("ggplot2")
+
+sys.source("data-preprocessing.R", envir = knitr::knit_global())
+
+```
+
+## Data description
+
+```{r}
+print(paste("Number of students:", likert$student_id %>% unique() %>% length()))
+print(paste("Number of likert questions:", likert$question %>% unique() %>% length()))
+print(paste("Number of non-likert questions:", names(nonlikert)[!(names(nonlikert) %in% c("student_id", "study_group"))] %>% length()))
+```
+
+The distribution of answers by study year is presented below.
+
+```{r}
+ggplot(nonlikert, aes(x=study_group)) + 
+  geom_bar() +
+  geom_text(stat="count", aes(label=..count..), vjust=-1) +
+  labs(x="Study group", y="Number of students", title="Number of students by study year")
+```
+
+
+## Likert questions
+
+## Non-likert questions
+
