@@ -53,28 +53,28 @@ ggplot(likert %>% filter(!is.na(answer)), aes(x=factor(study_group), y=answer)) 
 ```
 
 ```{r}
-ggplot(likert %>% filter(study_group==1, !is.na(answer)), aes(x=answer)) + 
+ggplot(likert %>% filter(study_group==1) %>% mutate(answer = ifelse(is.na(answer), "EOS", answer)), aes(x=answer)) + 
   geom_bar() + 
-  facet_wrap(~as.numeric(question_number)) +
+  facet_wrap(~as.numeric(question_number), nrow=5) +
   labs(x="Answer", y="Count", title="1st year students")
 ```
 
 ```{r}
-ggplot(likert %>% filter(study_group==2, !is.na(answer)), aes(x=answer)) + 
+ggplot(likert %>% filter(study_group==2) %>% mutate(answer = ifelse(is.na(answer), "EOS", answer)), aes(x=answer)) + 
   geom_bar() + 
-  facet_wrap(~as.numeric(question_number)) +
+  facet_wrap(~as.numeric(question_number), nrow=5) +
   labs(x="Answer", y="Count", title="2nd year students")
 ```
 
 ```{r}
-ggplot(likert %>% filter(study_group==3, !is.na(answer)), aes(x=answer)) + 
+ggplot(likert %>% filter(study_group==3) %>% mutate(answer = ifelse(is.na(answer), "EOS", answer)), aes(x=answer)) + 
   geom_bar() + 
-  facet_wrap(~as.numeric(question_number)) +
+  facet_wrap(~as.numeric(question_number), nrow=5) +
   labs(x="Answer", y="Count", title="3rd year students")
 ```
 
 
-## Missing data
+## Can not say
 
 ```{r}
 tbl = likert %>% group_by(question_group, study_group) %>% summarize(total_answers = n(), missing_answers = sum(is.na(answer)), missing_pct = round(missing_answers / total_answers * 100, 1))

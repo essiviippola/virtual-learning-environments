@@ -30,12 +30,48 @@ The first year students seemed to be the most critical in their answer.
 ggplot(likert %>% filter(!is.na(answer)), aes(x=factor(study_group), y=answer)) + 
   geom_boxplot() + 
   facet_grid(.~question_group) +
-  labs(x="Study group", y="Answer")
+  labs(x="Study group", y="Answer", title="Question group-wise answers by study group")
 ```
 
 ![](webpropol-answers_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-## Missing data
+``` r
+ggplot(likert %>% filter(!is.na(answer)), aes(x=factor(study_group), y=answer)) + 
+  geom_boxplot() + 
+  facet_wrap(~as.numeric(question_number)) +
+  labs(x="Study group", y="Answer", title="Question-wise answers by study group")
+```
+
+![](webpropol-answers_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+ggplot(likert %>% filter(study_group==1) %>% mutate(answer = ifelse(is.na(answer), "EOS", answer)), aes(x=answer)) + 
+  geom_bar() + 
+  facet_wrap(~as.numeric(question_number), nrow=5) +
+  labs(x="Answer", y="Count", title="1st year students")
+```
+
+![](webpropol-answers_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
+ggplot(likert %>% filter(study_group==2) %>% mutate(answer = ifelse(is.na(answer), "EOS", answer)), aes(x=answer)) + 
+  geom_bar() + 
+  facet_wrap(~as.numeric(question_number), nrow=5) +
+  labs(x="Answer", y="Count", title="2nd year students")
+```
+
+![](webpropol-answers_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+``` r
+ggplot(likert %>% filter(study_group==3) %>% mutate(answer = ifelse(is.na(answer), "EOS", answer)), aes(x=answer)) + 
+  geom_bar() + 
+  facet_wrap(~as.numeric(question_number), nrow=5) +
+  labs(x="Answer", y="Count", title="3rd year students")
+```
+
+![](webpropol-answers_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+## Can not say
 
 ``` r
 tbl = likert %>% group_by(question_group, study_group) %>% summarize(total_answers = n(), missing_answers = sum(is.na(answer)), missing_pct = round(missing_answers / total_answers * 100, 1))
@@ -70,4 +106,4 @@ ggplot(nonlikert %>% filter(!is.na(preferred_method)), aes(x=preferred_method, f
   theme(legend.position = "top")
 ```
 
-![](webpropol-answers_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](webpropol-answers_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
