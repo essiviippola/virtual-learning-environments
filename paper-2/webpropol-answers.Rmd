@@ -74,12 +74,12 @@ ggplot(likert %>% filter(study_group==3) %>% mutate(answer = ifelse(is.na(answer
 ```
 
 
-## Can not say
+## Can not say (EOS)
 
 ```{r}
 tbl = likert %>% group_by(question_group, study_group) %>% summarize(total_answers = n(), missing_answers = sum(is.na(answer)), missing_pct = round(missing_answers / total_answers * 100, 1))
 
-names(tbl) = c("Question group", "Study group", "Total answers", "Missing answers", "Missing answers (%)")
+names(tbl) = c("Question group", "Study group", "Total answers", "EOS answers", "EOS answers (%)")
 
 knitr::kable(tbl)
 ```
