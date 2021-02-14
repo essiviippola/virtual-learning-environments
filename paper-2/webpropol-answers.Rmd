@@ -42,7 +42,35 @@ The first year students seemed to be the most critical in their answer.
 ggplot(likert %>% filter(!is.na(answer)), aes(x=factor(study_group), y=answer)) + 
   geom_boxplot() + 
   facet_grid(.~question_group) +
-  labs(x="Study group", y="Answer")
+  labs(x="Study group", y="Answer", title="Question group-wise answers by study group")
+```
+
+```{r}
+ggplot(likert %>% filter(!is.na(answer)), aes(x=factor(study_group), y=answer)) + 
+  geom_boxplot() + 
+  facet_wrap(~as.numeric(question_number)) +
+  labs(x="Study group", y="Answer", title="Question-wise answers by study group")
+```
+
+```{r}
+ggplot(likert %>% filter(study_group==1, !is.na(answer)), aes(x=answer)) + 
+  geom_bar() + 
+  facet_wrap(~as.numeric(question_number)) +
+  labs(x="Answer", y="Count", title="1st year students")
+```
+
+```{r}
+ggplot(likert %>% filter(study_group==2, !is.na(answer)), aes(x=answer)) + 
+  geom_bar() + 
+  facet_wrap(~as.numeric(question_number)) +
+  labs(x="Answer", y="Count", title="2nd year students")
+```
+
+```{r}
+ggplot(likert %>% filter(study_group==3, !is.na(answer)), aes(x=answer)) + 
+  geom_bar() + 
+  facet_wrap(~as.numeric(question_number)) +
+  labs(x="Answer", y="Count", title="3rd year students")
 ```
 
 
